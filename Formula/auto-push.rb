@@ -1,30 +1,30 @@
 class AutoPush < Formula
   desc "CLI tool that automates git workflow with AI-generated commit messages"
   homepage "https://github.com/dickwu/auto-push"
-  version "0.1.4"
+  version "0.1.5"
   license "MIT"
 
   on_macos do
     on_arm do
       url "https://github.com/dickwu/auto-push/releases/download/v#{version}/auto-push-aarch64-apple-darwin.tar.gz"
-      sha256 "2e85fd62019c9e17b1943b894d7547354267ad78f87bffc5cf0f29a871e33b08"
+      sha256 "75985f39baebe07c953571d34e2e2a319d0cb99f24422f4a04aaf35302e70bf8"
     end
 
     on_intel do
       url "https://github.com/dickwu/auto-push/releases/download/v#{version}/auto-push-x86_64-apple-darwin.tar.gz"
-      sha256 "6ee6bd4d900cf01d3525ed5f46ac5994d6cd488e1f18a71879ba408e075fc94b"
+      sha256 "81adb298a18757c20ce11f68566222aa2ee434f3876ec12a016e08edb2e312f7"
     end
   end
 
   on_linux do
     on_arm do
       url "https://github.com/dickwu/auto-push/releases/download/v#{version}/auto-push-aarch64-unknown-linux-gnu.tar.gz"
-      sha256 "264a92b359619156fdaef7cb095e671bf7225972cb8ef2d07d8bfab950dfa5a0"
+      sha256 "46cccaec2e57bd5962b413e787d7e9acee039520ac072d122dd70d0d3120d967"
     end
 
     on_intel do
       url "https://github.com/dickwu/auto-push/releases/download/v#{version}/auto-push-x86_64-unknown-linux-gnu.tar.gz"
-      sha256 "40423e86d729c2fe98f4c70f7d4d6e7cb688cce66e1442f200b9f26d61739512"
+      sha256 "9e4df5a1b6d5cd60afee5d87cae4a94fe507496a60ca9184bb88bad6fcaa2035"
     end
   end
 
