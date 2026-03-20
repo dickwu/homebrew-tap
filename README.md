@@ -1,12 +1,13 @@
-# Homebrew Tap for cron-rs
+# Homebrew Tap
 
-Homebrew formulae for [cron-rs](https://github.com/dickwu/cron-rs) and [cron-rs-web](https://github.com/dickwu/cron-rs-web).
+Homebrew formula for [cron-rs-web](https://github.com/dickwu/cron-rs-web).
+
+Note: [cron-rs](https://github.com/dickwu/cron-rs) (the backend) is Linux-only (requires systemd) and is not available via Homebrew. Install it from [GitHub Releases](https://github.com/dickwu/cron-rs/releases).
 
 ## Install
 
 ```bash
 brew tap dickwu/tap
-brew install cron-rs
 brew install cron-rs-web
 ```
 
@@ -14,17 +15,12 @@ brew install cron-rs-web
 
 | Formula | Description |
 |---------|-------------|
-| `cron-rs` | Systemd timer management platform — API server + CLI + task runner |
-| `cron-rs-web` | Web dashboard — single binary with embedded Next.js UI |
+| `cron-rs-web` | Web dashboard for cron-rs — single binary with embedded Next.js UI |
 
 ## Quick Start
 
 ```bash
-# Set up and start the backend
-cron-rs init
-cron-rs daemon &
-
-# Start the web dashboard
+# Start the web dashboard (connects to cron-rs API at localhost:9746)
 cron-rs-web-server
 # Open http://localhost:3000
 ```
