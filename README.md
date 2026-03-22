@@ -1,6 +1,6 @@
 # Homebrew Tap
 
-Homebrew formulae for dickwu packages.
+Homebrew formulae and casks for dickwu packages.
 
 ## Install
 
@@ -10,10 +10,25 @@ brew tap dickwu/tap
 
 ## Packages
 
-| Formula | Description | Install |
-|---------|-------------|---------|
-| [`ironguard`](https://github.com/dickwu/ironguard) | Modern cross-platform WireGuard in Rust — async Tokio, JSON config, QUIC transport, post-quantum ready | `brew install ironguard` |
-| [`cron-rs-web`](https://github.com/dickwu/cron-rs-web) | Web dashboard for cron-rs — single binary with embedded Next.js UI | `brew install cron-rs-web` |
+| Package | Type | Description | Install |
+|---------|------|-------------|---------|
+| [`piu`](https://github.com/dickwu/piu) | Cask | Native desktop API client — Postman alternative built with Tauri | `brew install --cask piu` |
+| [`ironguard`](https://github.com/dickwu/ironguard) | Formula | Modern cross-platform WireGuard in Rust — async Tokio, JSON config, QUIC transport, post-quantum ready | `brew install ironguard` |
+| [`cron-rs-web`](https://github.com/dickwu/cron-rs-web) | Formula | Web dashboard for cron-rs — single binary with embedded Next.js UI | `brew install cron-rs-web` |
+
+## PIU
+
+Native desktop API management app — a Postman alternative built with Tauri 2.0, React 19, and Ant Design 6. Offline-first with local SQLite storage, knowledge graph visualization, and LLM-friendly MCP server.
+
+```bash
+brew install --cask piu
+```
+
+The installer automatically removes the macOS quarantine flag. If you see a "damaged" warning, run:
+
+```bash
+sudo xattr -d com.apple.quarantine /Applications/Piu.app
+```
 
 ## IronGuard
 
