@@ -21,11 +21,10 @@ cask "piu" do
 
   app "Piu.app"
 
-  postflight do
-    system_command "/usr/bin/xattr",
-                   args: ["-d", "com.apple.quarantine", "#{appdir}/Piu.app"],
-                   sudo: true
-  end
+  caveats <<~EOS
+    If macOS shows a "damaged app" or quarantine warning, run:
+      sudo xattr -d com.apple.quarantine /Applications/Piu.app
+  EOS
 
   zap trash: [
     "~/Library/Application Support/com.dickwu.piu",
