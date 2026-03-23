@@ -1,13 +1,13 @@
 cask "piu" do
-  version "0.1.38"
+  version "0.1.39"
 
   on_arm do
     url "https://github.com/dickwu/piu/releases/download/v#{version}/Piu_#{version}_aarch64.dmg"
-    sha256 "c16ceeab6eca05aebca2361ba7f7db982a6d63af75b92c0ccc7700cedee24bd7"
+    sha256 "0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5"
   end
   on_intel do
     url "https://github.com/dickwu/piu/releases/download/v#{version}/Piu_#{version}_x64.dmg"
-    sha256 "9e811784e532b5a9a1ddb7815b35cb2090d314c03e593bf076773e06927993be"
+    sha256 "0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5"
   end
 
   name "PIU"
