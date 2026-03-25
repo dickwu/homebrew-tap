@@ -1,30 +1,30 @@
 class Ironguard < Formula
   desc "Modern cross-platform WireGuard implementation in Rust"
   homepage "https://github.com/dickwu/ironguard"
-  version "0.2.2"
+  version "0.2.3"
   license "GPL-3.0-or-later"
 
   on_macos do
     on_arm do
       url "https://github.com/dickwu/ironguard/releases/download/v#{version}/ironguard-macos-aarch64.tar.gz"
-      sha256 "b1b322f0c80ef56c078bb9af65f401a456fa90f387f2b2a43cc222f0f7abdb5e"
+      sha256 "bea8325493559a300f6bd1901e6177faf8956ff71cc79e844097c86984079de8"
     end
 
     on_intel do
       url "https://github.com/dickwu/ironguard/releases/download/v#{version}/ironguard-macos-x86_64.tar.gz"
-      sha256 "f846da5d1a1748b9106490d0c819258919c9f11a9c999e6e7f326ccc6fa3e769"
+      sha256 "abf35b79fdf8f7bb195e02823402dba373dce488522fb8809a5c6202c0a951ea"
     end
   end
 
   on_linux do
     on_arm do
       url "https://github.com/dickwu/ironguard/releases/download/v#{version}/ironguard-linux-aarch64.tar.gz"
-      sha256 "632530a902c2eec4575db24099e943c54c036dd074ede280b589e193e3677e75"
+      sha256 "03c7a972728c0518a4371de7a092d34a640007c4ff483df0761f7bd6c5eaa8a7"
     end
 
     on_intel do
       url "https://github.com/dickwu/ironguard/releases/download/v#{version}/ironguard-linux-x86_64.tar.gz"
-      sha256 "29a7d89ebb9dbc987a0f16c12fafc8cdd1c00bf8b5afd3f7da8e9d8e20d46c0e"
+      sha256 "6d6b3da48129741cd3bc4ed91ad8e3ef185eecc2765cd8573d65cae827bc3d36"
     end
   end
 
