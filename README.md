@@ -15,6 +15,7 @@ brew tap dickwu/tap
 | [`piu`](https://github.com/dickwu/piu) | Cask | Native desktop API client — Postman alternative built with Tauri | `brew install --cask piu` |
 | [`ironguard`](https://github.com/dickwu/ironguard) | Formula | Modern cross-platform WireGuard in Rust — async Tokio, JSON config, QUIC transport, post-quantum ready | `brew install ironguard` |
 | [`cron-rs-web`](https://github.com/dickwu/cron-rs-web) | Formula | Web dashboard for cron-rs — single binary with embedded Next.js UI | `brew install cron-rs-web` |
+| [`source-map-php`](https://github.com/dickwu/source-map-php) | Formula | CLI-first PHP code search indexer for Laravel and Hyperf repositories | `brew install source-map-php` |
 
 ## PIU
 
@@ -58,3 +59,21 @@ cron-rs-web-server
 ```
 
 Note: [cron-rs](https://github.com/dickwu/cron-rs) (the backend) is Linux-only (requires systemd) and is not available via Homebrew. Install it from [GitHub Releases](https://github.com/dickwu/cron-rs/releases).
+
+## source-map-php
+
+```bash
+brew install source-map-php
+```
+
+This installs:
+
+- `source-map-php`
+- `phpantom_lsp`
+
+`source-map-php` reads Meilisearch credentials from:
+
+1. `MEILI_HOST` and `MEILI_MASTER_KEY`
+2. `~/.config/meilisearch/connect.json`
+
+Use it to index Laravel and Hyperf repos into Meilisearch, then search them by saved project name or full repo path.
