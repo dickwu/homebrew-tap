@@ -12,6 +12,7 @@ brew tap dickwu/tap
 
 | Package | Type | Description | Install |
 |---------|------|-------------|---------|
+| [`realtime-pdf`](https://github.com/dickwu/realtime-pdf) | Cask | Desktop PDF watcher with saved history and regeneration hooks | `brew install --cask realtime-pdf` |
 | [`piu`](https://github.com/dickwu/piu) | Cask | Native desktop API client — Postman alternative built with Tauri | `brew install --cask piu` |
 | [`ironguard`](https://github.com/dickwu/ironguard) | Formula | Modern cross-platform WireGuard in Rust — async Tokio, JSON config, QUIC transport, post-quantum ready | `brew install ironguard` |
 | [`cron-rs-web`](https://github.com/dickwu/cron-rs-web) | Formula | Web dashboard for cron-rs — single binary with embedded Next.js UI | `brew install cron-rs-web` |
@@ -77,3 +78,18 @@ This installs:
 2. `~/.config/meilisearch/connect.json`
 
 Use it to index Laravel and Hyperf repos into Meilisearch, then search them by saved project name or full repo path.
+
+
+## Realtime PDF
+
+Desktop PDF watcher with saved history, hook-driven regeneration commands, and a full-window PDF viewer.
+
+```bash
+brew install --cask realtime-pdf
+```
+
+If macOS shows a damaged app or quarantine warning, run:
+
+```bash
+sudo xattr -rd com.apple.quarantine "/Applications/Realtime PDF.app"
+```
