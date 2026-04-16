@@ -91,5 +91,5 @@ brew install --cask realtime-pdf
 If macOS shows a damaged app or quarantine warning, run:
 
 ```bash
-sudo xattr -d com.apple.quarantine "/Applications/Realtime PDF.app"
+sudo xattr -d com.apple.quarantine /Applications/Realtime\ PDF.app/
 ```
