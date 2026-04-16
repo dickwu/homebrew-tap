@@ -1,14 +1,14 @@
 cask "realtime-pdf" do
-  version "0.1.3"
+  version "0.1.4"
 
   on_arm do
-    url "https://github.com/dickwu/realtime-pdf/releases/download/v#{version}/Realtime.PDF_0.1.3_aarch64.dmg"
-    sha256 "dace94c3837038384272e9b33a48457b1da219fde302af7628c303d5d404dca8"
+    url "https://github.com/dickwu/realtime-pdf/releases/download/v#{version}/Realtime.PDF_0.1.4_aarch64.dmg"
+    sha256 "b2875e41122367c8e3d95fff69f1a41e9fa13c76ce888c1b308ed8058ea632dc"
   end
 
   on_intel do
-    url "https://github.com/dickwu/realtime-pdf/releases/download/v#{version}/Realtime.PDF_0.1.3_x64.dmg"
-    sha256 "0a14cad26a7beb3e071e9c9a0a419282b82febb23d69a24f2ea38478d8d02888"
+    url "https://github.com/dickwu/realtime-pdf/releases/download/v#{version}/Realtime.PDF_0.1.4_x64.dmg"
+    sha256 "0e954b346ae00dc8ecd79d51faa7c557ed2821cad1fa007cc911c0ceb2d6d3cc"
   end
 
   name "Realtime PDF"
@@ -24,7 +24,7 @@ cask "realtime-pdf" do
 
   caveats <<~EOS
     If macOS shows a "damaged app" or quarantine warning, run:
-      sudo xattr -d com.apple.quarantine /Applications/Realtime\ PDF.app/
+      sudo xattr -d com.apple.quarantine "/Applications/Realtime PDF.app"
   EOS
 
   zap trash: [
