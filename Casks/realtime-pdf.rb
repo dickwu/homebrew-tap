@@ -24,7 +24,7 @@ cask "realtime-pdf" do
 
   caveats <<~EOS
     If macOS shows a "damaged app" or quarantine warning, run:
-      sudo xattr -d com.apple.quarantine "/Applications/Realtime PDF.app"
+      sudo xattr -d com.apple.quarantine /Applications/Realtime\ PDF.app/
   EOS
 
   zap trash: [
