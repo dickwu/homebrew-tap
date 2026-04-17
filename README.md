@@ -18,6 +18,7 @@ brew tap dickwu/tap
 | [`ironguard`](https://github.com/dickwu/ironguard) | Formula | Modern cross-platform WireGuard in Rust — async Tokio, JSON config, QUIC transport, post-quantum ready | `brew install ironguard` |
 | [`cron-rs-web`](https://github.com/dickwu/cron-rs-web) | Formula | Web dashboard for cron-rs — single binary with embedded Next.js UI | `brew install cron-rs-web` |
 | [`source-map-php`](https://github.com/dickwu/source-map-php) | Formula | CLI-first PHP code search indexer for Laravel and Hyperf repositories | `brew install source-map-php` |
+| [`source-map-tauri`](https://github.com/dickwu/source-map-tauri) | Formula | Static Tauri app scanner that emits Meilisearch-ready NDJSON | `brew install source-map-tauri` |
 
 ## R2 Client
 
@@ -93,6 +94,34 @@ This installs:
 2. `~/.config/meilisearch/connect.json`
 
 Use it to index Laravel and Hyperf repos into Meilisearch, then search them by saved project name or full repo path.
+
+## source-map-tauri
+
+```bash
+brew install source-map-tauri
+```
+
+`source-map-tauri` statically scans Tauri repositories and emits Meilisearch-ready
+NDJSON for artifacts, edges, warnings, and project metadata.
+
+Use it to:
+
+- extract frontend components, hooks, permissions, capabilities, and Rust command surfaces
+- emit canonical frontend HTTP endpoint flows such as `LoginModal -> useLogin -> usePostApi -> POST /auth/login`
+- validate scan bundles before upload or reindex
+
+It reads Meilisearch credentials from:
+
+1. `MEILI_HOST`, `MEILI_MASTER_KEY`, and `MEILI_SEARCH_KEY`
+2. `~/.config/meilisearch/connect.json`
+
+Common workflow:
+
+```bash
+source-map-tauri init --root /path/to/tauri-app
+source-map-tauri scan --root /path/to/tauri-app --repo my-tauri-app --out /tmp/source-map-tauri
+source-map-tauri validate --input /tmp/source-map-tauri
+```
 
 
 ## Realtime PDF
