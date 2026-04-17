@@ -1,25 +1,25 @@
 class SourceMapTauri < Formula
   desc "Static Tauri app scanner that emits Meilisearch-ready NDJSON"
   homepage "https://github.com/dickwu/source-map-tauri"
-  version "0.2.0"
+  version "0.3.0"
   license "MIT"
 
   on_macos do
     on_arm do
       url "https://github.com/dickwu/source-map-tauri/releases/download/v#{version}/source-map-tauri-aarch64-apple-darwin.tar.gz"
-      sha256 "e5adffba1bb25010b6c01e3d3dacf9b13c91d07b335af41c2c4c5a5fe8c93dd3"
+      sha256 "12ff92c98920b203cd67937b18c39c0cf9a816ef87d152fe05112acf25622e65"
     end
 
     on_intel do
       url "https://github.com/dickwu/source-map-tauri/releases/download/v#{version}/source-map-tauri-x86_64-apple-darwin.tar.gz"
-      sha256 "83e330e23ca082143c7d93d529ff71f5c4b27427ed8e998a4f3867243020774b"
+      sha256 "675a40fc911d81cd2e22d085685a076b46f4aad77d7af03bb1f6ca38cf00e6f1"
     end
   end
 
   on_linux do
     on_intel do
       url "https://github.com/dickwu/source-map-tauri/releases/download/v#{version}/source-map-tauri-x86_64-unknown-linux-gnu.tar.gz"
-      sha256 "f2310194cd8ca04bc6e59eba7447d658710f37d00e6e99fbf6dfbf734b20fb55"
+      sha256 "6f88befa5f295968dffbb05997ee09ff93000ff719efdedba78f9275a3483e1f"
     end
   end
 
