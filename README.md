@@ -12,11 +12,26 @@ brew tap dickwu/tap
 
 | Package | Type | Description | Install |
 |---------|------|-------------|---------|
+| [`r2`](https://github.com/dickwu/r2) | Cask | Desktop client for managing S3-compatible storage (Cloudflare R2, AWS S3, MinIO, RustFS) | `brew install --cask r2` |
 | [`realtime-pdf`](https://github.com/dickwu/realtime-pdf) | Cask | Desktop PDF watcher with saved history and regeneration hooks | `brew install --cask realtime-pdf` |
 | [`piu`](https://github.com/dickwu/piu) | Cask | Native desktop API client — Postman alternative built with Tauri | `brew install --cask piu` |
 | [`ironguard`](https://github.com/dickwu/ironguard) | Formula | Modern cross-platform WireGuard in Rust — async Tokio, JSON config, QUIC transport, post-quantum ready | `brew install ironguard` |
 | [`cron-rs-web`](https://github.com/dickwu/cron-rs-web) | Formula | Web dashboard for cron-rs — single binary with embedded Next.js UI | `brew install cron-rs-web` |
 | [`source-map-php`](https://github.com/dickwu/source-map-php) | Formula | CLI-first PHP code search indexer for Laravel and Hyperf repositories | `brew install source-map-php` |
+
+## R2 Client
+
+Desktop client for managing S3-compatible storage, including Cloudflare R2, AWS S3, MinIO, and RustFS.
+
+```bash
+brew install --cask r2
+```
+
+If macOS shows a damaged app or quarantine warning, run:
+
+```bash
+sudo xattr -d com.apple.quarantine /Applications/r2.app/
+```
 
 ## PIU
 
