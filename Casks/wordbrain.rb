@@ -6,7 +6,6 @@ cask "wordbrain" do
   name "WordBrain"
   desc "Local-first English vocabulary builder with FSRS review and word-network graphs"
   homepage "https://github.com/dickwu/wordbrain"
-  license "MIT"
 
   app "WordBrain.app"
 
