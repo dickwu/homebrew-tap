@@ -1,6 +1,6 @@
 cask "ai-web-debugger" do
-  version "0.1.1"
-  sha256 "8109f635922c03421b30d0d6548eed28b7ec3cef2bf1f793cbaaa34480605c9c"
+  version "0.1.2"
+  sha256 "29e7b2461e53bb850ffc0c5e6590e31e5436dba83866fdc6014986df93fec182"
 
   url "https://github.com/dickwu/ai-web-debugger/releases/download/v#{version}/AI-Web-Debugger-#{version}-arm64.dmg"
   name "AI Web Debugger"
