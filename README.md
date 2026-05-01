@@ -12,6 +12,7 @@ brew tap dickwu/tap
 
 | Package | Type | Description | Install |
 |---------|------|-------------|---------|
+| [`ai-web-debugger`](https://github.com/dickwu/ai-web-debugger) | Cask | Observable Electron browser for LLM-driven webpage debugging | `brew install --cask ai-web-debugger` |
 | [`r2`](https://github.com/dickwu/r2) | Cask | Desktop client for managing S3-compatible storage (Cloudflare R2, AWS S3, MinIO, RustFS) | `brew install --cask r2` |
 | [`realtime-pdf`](https://github.com/dickwu/realtime-pdf) | Cask | Desktop PDF watcher with saved history and regeneration hooks | `brew install --cask realtime-pdf` |
 | [`piu`](https://github.com/dickwu/piu) | Cask | Native desktop API client — Postman alternative built with Tauri | `brew install --cask piu` |
@@ -20,6 +21,20 @@ brew tap dickwu/tap
 | [`cron-rs-web`](https://github.com/dickwu/cron-rs-web) | Formula | Web dashboard for cron-rs — single binary with embedded Next.js UI | `brew install cron-rs-web` |
 | [`source-map-php`](https://github.com/dickwu/source-map-php) | Formula | CLI-first PHP code search indexer for Laravel and Hyperf repositories | `brew install source-map-php` |
 | [`source-map-tauri`](https://github.com/dickwu/source-map-tauri) | Formula | Static Tauri app scanner that emits Meilisearch-ready NDJSON | `brew install source-map-tauri` |
+
+## AI Web Debugger
+
+Electron desktop app that embeds an observable Chromium browser and exposes structured debugging tools for LLM-driven page diagnosis.
+
+```bash
+brew install --cask ai-web-debugger
+```
+
+If macOS shows a damaged app or quarantine warning, run:
+
+```bash
+sudo xattr -d com.apple.quarantine /Applications/AI\ Web\ Debugger.app/
+```
 
 ## R2 Client
 
