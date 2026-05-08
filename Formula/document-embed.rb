@@ -1,9 +1,9 @@
 class DocumentEmbed < Formula
   desc "PHP extension for screenshot-robust PDF and image TrustMark IDs"
   homepage "https://github.com/dickwu/document_embed"
-  url "https://github.com/dickwu/document_embed/archive/refs/tags/v0.1.1.tar.gz"
-  version "0.1.1"
-  sha256 "4a836a74c3c36ddc76950b7f852b25b09ce2065199831497337e654489a964fe"
+  url "https://github.com/dickwu/document_embed/archive/refs/tags/v0.1.2.tar.gz"
+  version "0.1.2"
+  sha256 "3297d772f6ce1954503ab36c40f5b063c29e70a50af75aa7e7e7e39786143dfc"
   license "MIT"
 
   depends_on "llvm" => :build
@@ -36,7 +36,7 @@ class DocumentEmbed < Formula
     (lib/"php/extensions").install "target/release/libpdfwm.#{extension}" => "pdfwm.so"
 
     Pathname.glob(etc/"php/*/conf.d/ext-pdfwm.ini").each do |config|
-      rm_f config unless config == php_conf_d/"ext-pdfwm.ini"
+      rm_f config
     end
 
     php_conf_d.mkpath
