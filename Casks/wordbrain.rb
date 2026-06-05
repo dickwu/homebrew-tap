@@ -1,6 +1,6 @@
 cask "wordbrain" do
-  version "0.2.4"
-  sha256 "4668914238a8be95575e931a5cde5733b22facf702e3cfde27c64aa5da9ae04a"
+  version "0.2.5"
+  sha256 "73e47c862f27826d8516d95eac8aa95fae9eea43976671b6697d2605de66cc92"
 
   url "https://github.com/dickwu/wordbrain/releases/download/v#{version}/WordBrain_#{version}_universal.dmg"
   name "WordBrain"
