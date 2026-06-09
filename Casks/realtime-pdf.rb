@@ -1,14 +1,14 @@
 cask "realtime-pdf" do
-  version "0.1.14"
+  version "0.1.15"
 
   on_arm do
-    url "https://github.com/dickwu/realtime-pdf/releases/download/v#{version}/Realtime.PDF_0.1.14_aarch64.dmg"
-    sha256 "43a0ef1dde79fa34a5fda2ba5645e662710c66e04337927ea60697f69ccda527"
+    url "https://github.com/dickwu/realtime-pdf/releases/download/v#{version}/Realtime.PDF_0.1.15_aarch64.dmg"
+    sha256 "ed22f6e36afcef3b97eae96cdbec5e8fe37e66aff7b5173a68025033a7dbcaa3"
   end
 
   on_intel do
-    url "https://github.com/dickwu/realtime-pdf/releases/download/v#{version}/Realtime.PDF_0.1.14_x64.dmg"
-    sha256 "d254b0279a5ad33b7177b4da43ceec2d5290c90a0d246b058f16e472dbaafc68"
+    url "https://github.com/dickwu/realtime-pdf/releases/download/v#{version}/Realtime.PDF_0.1.15_x64.dmg"
+    sha256 "0892d2e82d1638cb828dc0ac045d4bf9da0f94aa3b404120df0d0ba5d0129602"
   end
 
   name "Realtime PDF"
