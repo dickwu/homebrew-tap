@@ -1,14 +1,14 @@
 cask "r2" do
-  version "0.2.12"
+  version "0.2.15"
 
   on_arm do
     url "https://github.com/dickwu/r2/releases/download/v#{version}/r2_#{version}_aarch64.dmg"
-    sha256 "2cdf9ecc69664d41172db370bb43206ad6379586578b82e5cdb2474ef4e70713"
+    sha256 "09e0924bd340a6d47919048834048fa762dae16d69b838a5f42b22d28f17bed8"
   end
 
   on_intel do
     url "https://github.com/dickwu/r2/releases/download/v#{version}/r2_#{version}_x64.dmg"
-    sha256 "65d72edf955ff9b1ffac8274902a397541906905e9b7e3869304e160510ecd9b"
+    sha256 "f3fd61417715059f5bfa7f8d01f875ed54d280903340c8af07c08365a002f26f"
   end
 
   name "R2 Client"
