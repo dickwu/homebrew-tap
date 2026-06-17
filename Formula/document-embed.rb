@@ -1,9 +1,9 @@
 class DocumentEmbed < Formula
   desc "PHP extension for screenshot-robust PDF and image TrustMark IDs"
   homepage "https://github.com/dickwu/document_embed"
-  url "https://github.com/dickwu/document_embed/archive/refs/tags/v0.1.2.tar.gz"
-  version "0.1.2"
-  sha256 "3297d772f6ce1954503ab36c40f5b063c29e70a50af75aa7e7e7e39786143dfc"
+  url "https://github.com/dickwu/document_embed/archive/refs/tags/v0.1.5.tar.gz"
+  version "0.1.5"
+  sha256 "35f2931e10a43054d0ac6251d9a51cdfaa70607743f24be516809469df0348d9"
   license "MIT"
 
   depends_on "llvm" => :build
