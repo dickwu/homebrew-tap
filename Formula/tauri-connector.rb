@@ -1,30 +1,30 @@
 class TauriConnector < Formula
   desc "CLI for deep inspection and interaction with Tauri v2 desktop apps"
   homepage "https://github.com/dickwu/tauri-connector"
-  version "0.13.0"
+  version "0.13.1"
   license "MIT"
 
   on_macos do
     on_arm do
       url "https://github.com/dickwu/tauri-connector/releases/download/v#{version}/tauri-connector-aarch64-apple-darwin.tar.gz"
-      sha256 "16d6b6eab8c4f4411201b2c9f056a6b4544ca0351ea90e8b0c460d7e1194a2c6"
+      sha256 "7437296db20f5fc3254c4597a733fea6dad9905296ec734e21a830fbc920ad9c"
     end
 
     on_intel do
       url "https://github.com/dickwu/tauri-connector/releases/download/v#{version}/tauri-connector-x86_64-apple-darwin.tar.gz"
-      sha256 "6f74bd58ff1fa83b51c7f91242291fc7ca33691c45a10b200b9c033e38f008bc"
+      sha256 "f4653df19736770fbf52e6cbae0ff8ca1296c0990abb76bdd8c5ddec028e5cc0"
     end
   end
 
   on_linux do
     on_arm do
       url "https://github.com/dickwu/tauri-connector/releases/download/v#{version}/tauri-connector-aarch64-unknown-linux-gnu.tar.gz"
-      sha256 "681a4f1dd29119a1d741ce0d793fda51ea964684c506a615427b334a575cd9b7"
+      sha256 "5731b38019e5cfcf37c411d82ce56a6b00894cf98c02198e0188579fee0b233f"
     end
 
     on_intel do
       url "https://github.com/dickwu/tauri-connector/releases/download/v#{version}/tauri-connector-x86_64-unknown-linux-gnu.tar.gz"
-      sha256 "9116ebd7e158bfb7e78baac2cd118c2b9b9e3dbdfd176a1efc516df808dd597b"
+      sha256 "5e50696702f4fb244c5457df06d347eea24bdd966409dd927129456f0a7d3065"
     end
   end
 
