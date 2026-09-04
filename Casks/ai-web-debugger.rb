@@ -13,7 +13,7 @@ cask "ai-web-debugger" do
   end
 
   depends_on arch: :arm64
-  depends_on macos: ">= :big_sur"
+  depends_on macos: :big_sur
 
   app "AI Web Debugger.app"
 
