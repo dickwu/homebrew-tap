@@ -1,9 +1,9 @@
 class HtmlPdf < Formula
   desc "PHP extension for Ironpress HTML and Markdown PDF rendering"
   homepage "https://github.com/dickwu/html-pdf"
-  url "https://github.com/dickwu/html-pdf/archive/refs/tags/v0.3.0.tar.gz"
-  version "0.3.0"
-  sha256 "2bf5b5899e311f6b42fddb7c2fed8ccd003ef0d944d5241f464ef1e76af7a4b7"
+  url "https://github.com/dickwu/html-pdf/archive/refs/tags/v0.3.1.tar.gz"
+  version "0.3.1"
+  sha256 "ed3303d2d269a88ef7fc9b5baf41cdc02145f71019947d4cb14481505ab47e96"
   license "MIT"
 
   depends_on "llvm" => :build
@@ -36,7 +36,15 @@ class HtmlPdf < Formula
 
       config_dir = etc/"php/#{php_version}/conf.d"
       config_dir.mkpath
-      (config_dir/"ext-ironpress_php.ini").write <<~INI
+
+      # Files under etc survive uninstall and upgrade, and Homebrew's
+      # Pathname#write raises "Will not overwrite" on an existing file. Drop the
+      # ini files any earlier version of this formula left behind so reinstalls
+      # stay idempotent and no stale extension path lingers in conf.d.
+      rm Dir["#{config_dir}/*ironpress_php*.ini"]
+
+      config_file = config_dir/"ext-ironpress_php.ini"
+      config_file.write <<~INI
         extension=#{opt_lib}/php/#{php_version}/extensions/ironpress_php.so
       INI
     end
