@@ -1,9 +1,9 @@
 class HtmlPdf < Formula
   desc "PHP extension for Ironpress HTML and Markdown PDF rendering"
   homepage "https://github.com/dickwu/html-pdf"
-  url "https://github.com/dickwu/html-pdf/archive/refs/tags/v0.2.4.tar.gz"
-  version "0.2.4"
-  sha256 "31f01cf1cec8cd75ffa6a83084d618fa823ea992df9e457414cd3ea07f06063a"
+  url "https://github.com/dickwu/html-pdf/archive/refs/tags/v0.2.5.tar.gz"
+  version "0.2.5"
+  sha256 "ce82461b12f255ed8cf8628aef93e004bf301f68152163c10898e4f2c03dce9d"
   license "MIT"
 
   depends_on "llvm" => :build
