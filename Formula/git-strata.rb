@@ -1,32 +1,32 @@
 class GitStrata < Formula
   desc "Per-session APFS workspaces over shared git base snapshots"
   homepage "https://github.com/dickwu/git-strata"
-  url "https://github.com/dickwu/git-strata.git",
-      tag:      "v0.1.0",
-      revision: "f369ad3f369ad3f369ad3f369ad3f369ad3f369a"
+  version "0.1.0"
+  url "https://github.com/dickwu/git-strata/releases/download/v#{version}/git-strata-#{version}-aarch64-apple-darwin.tar.gz"
+  sha256 "0000000000000000000000000000000000000000000000000000000000000000"
   license any_of: ["MIT", "Apache-2.0"]
-  head "https://github.com/dickwu/git-strata.git", branch: "main"
 
   livecheck do
     url :stable
     strategy :github_latest
   end
 
-  depends_on "rust" => :build
+  depends_on arch: :arm64
   depends_on macos: :ventura
 
   def install
-    system "cargo", "install", *std_cargo_args(path: "crates/git-strata")
-    system "cargo", "install", *std_cargo_args(path: "crates/strata-daemon")
-    pkgshare.install "examples/config.toml"
+    bin.install "bin/git-strata", "bin/git-stratad"
+    pkgshare.install "share/git-strata/config.toml"
   end
 
+  # No `service do` block on purpose: `brew services` would load a second
+  # LaunchAgent (homebrew.mxcl.git-strata) next to com.gwd.git-stratad, and two
+  # daemons would contend for the same socket and lock.
   def caveats
     <<~EOS
       The daemon runs as the per-user LaunchAgent com.gwd.git-stratad.
-      Do not use `brew services` for it: a second agent would contend for the
-      same socket and lock. Write the plist once, pointing at the stable opt
-      path (upgrades then need no plist edit):
+      Do not use `brew services` for it. Write the plist once, pointing at the
+      stable opt path (upgrades then need no plist edit):
 
         mkdir -p ~/Library/LaunchAgents
         git-stratad --print-plist #{opt_bin}/git-stratad > /tmp/git-stratad.plist &&

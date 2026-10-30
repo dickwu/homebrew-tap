@@ -26,10 +26,11 @@ cask "git-strata-desktop" do
   ]
 
   caveats <<~EOS
-    GIT STRATA is signed with a self-signed identity and is not notarized, so
-    Gatekeeper blocks the first open. Open it once, then allow it in
-    System Settings > Privacy & Security > Open Anyway.
+    Release builds are signed with whatever identity the release workflow had
+    (ad-hoc unless a Developer ID is configured) and may not be notarized. If
+    macOS refuses the first open, allow it once in System Settings > Privacy &
+    Security > Open Anyway.
     The app drives the daemon from the git-strata formula (LaunchAgent
-    com.gwd.git-stratad); see `brew info git-strata`.
+    com.gwd.git-stratad); see `brew info dickwu/tap/git-strata`.
   EOS
 end

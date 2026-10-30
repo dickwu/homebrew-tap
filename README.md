@@ -172,7 +172,7 @@ sudo xattr -d com.apple.quarantine /Applications/WordBrain.app/
 
 ## git-strata
 
-Per-session APFS workspaces over shared git base snapshots: the `git-strata` CLI and the `git-stratad` daemon (macOS 13+, APFS). Built from source.
+Per-session APFS workspaces over shared git base snapshots: the `git-strata` CLI and the `git-stratad` daemon (Apple silicon, macOS 13+, APFS). Installs the prebuilt release tarball.
 
 ```bash
 brew install dickwu/tap/git-strata
@@ -198,4 +198,6 @@ Desktop app (Apple silicon only):
 brew install --cask dickwu/tap/git-strata-desktop
 ```
 
-It is self-signed and not notarized, so Gatekeeper blocks the first open: allow it in System Settings > Privacy & Security > Open Anyway.
+Unless the release was Developer ID signed and notarized, Gatekeeper blocks the first open: allow it in System Settings > Privacy & Security > Open Anyway.
+
+New releases: the git-strata release workflow bumps both files when its `HOMEBREW_TAP_TOKEN` secret is set; otherwise run `scripts/release/bump-tap.sh <version> SHA256SUMS.txt <this checkout>` from the git-strata repo and commit.
