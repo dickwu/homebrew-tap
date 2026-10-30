@@ -21,6 +21,8 @@ brew tap dickwu/tap
 | [`cron-rs-web`](https://github.com/dickwu/cron-rs-web) | Formula | Web dashboard for cron-rs — single binary with embedded Next.js UI | `brew install cron-rs-web` |
 | [`source-map-php`](https://github.com/dickwu/source-map-php) | Formula | CLI-first PHP code search indexer for Laravel and Hyperf repositories | `brew install source-map-php` |
 | [`source-map-tauri`](https://github.com/dickwu/source-map-tauri) | Formula | Static Tauri app scanner that emits Meilisearch-ready NDJSON | `brew install source-map-tauri` |
+| [`git-strata`](https://github.com/dickwu/git-strata) | Formula | Per-session APFS workspaces over shared git base snapshots (CLI + daemon) | `brew install git-strata` |
+| [`git-strata-desktop`](https://github.com/dickwu/git-strata) | Cask | GIT STRATA desktop app (Apple silicon; needs the `git-strata` formula) | `brew install --cask git-strata-desktop` |
 
 ## AI Web Debugger
 
@@ -167,3 +169,33 @@ If macOS shows a damaged app or quarantine warning, run:
 ```bash
 sudo xattr -d com.apple.quarantine /Applications/WordBrain.app/
 ```
+
+## git-strata
+
+Per-session APFS workspaces over shared git base snapshots: the `git-strata` CLI and the `git-stratad` daemon (macOS 13+, APFS). Built from source.
+
+```bash
+brew install dickwu/tap/git-strata
+```
+
+The daemon runs as the single LaunchAgent `com.gwd.git-stratad`. Do not use `brew services` for it. Write the plist once with the stable opt path, then start it:
+
+```bash
+mkdir -p ~/Library/LaunchAgents
+git-stratad --print-plist "$(brew --prefix)/opt/git-strata/bin/git-stratad" > /tmp/git-stratad.plist &&
+  mv /tmp/git-stratad.plist ~/Library/LaunchAgents/com.gwd.git-stratad.plist
+mkdir -p ~/Library/Application\ Support/git-strata
+cp "$(brew --prefix)/share/git-strata/config.toml" ~/Library/Application\ Support/git-strata/
+# edit config.toml ([paths] root on the same APFS volume as your repos), then:
+git-strata daemon start
+```
+
+After `brew upgrade git-strata`, run `git-strata daemon stop && git-strata daemon start`. Before uninstalling, run `git-strata daemon stop` and remove the plist.
+
+Desktop app (Apple silicon only):
+
+```bash
+brew install --cask dickwu/tap/git-strata-desktop
+```
+
+It is self-signed and not notarized, so Gatekeeper blocks the first open: allow it in System Settings > Privacy & Security > Open Anyway.
