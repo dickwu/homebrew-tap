@@ -198,6 +198,10 @@ Desktop app (Apple silicon only):
 brew install --cask dickwu/tap/git-strata-desktop
 ```
 
-Unless the release was Developer ID signed and notarized, Gatekeeper blocks the first open: allow it in System Settings > Privacy & Security > Open Anyway.
+If macOS shows a damaged app or quarantine warning, allow it in System Settings > Privacy & Security > Open Anyway, or run:
 
-New releases: the git-strata release workflow bumps both files when its `HOMEBREW_TAP_TOKEN` secret is set; otherwise run `scripts/release/bump-tap.sh <version> SHA256SUMS.txt <this checkout>` from the git-strata repo and commit.
+```bash
+sudo xattr -dr com.apple.quarantine "/Applications/GIT STRATA.app"
+```
+
+The formula binaries are not quarantined by Homebrew, so they need no `xattr` step. New releases update both files through git-strata's `homebrew.yml` workflow.

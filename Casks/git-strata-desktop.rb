@@ -1,8 +1,11 @@
 cask "git-strata-desktop" do
   version "0.1.0"
-  sha256 "0000000000000000000000000000000000000000000000000000000000000000"
 
-  url "https://github.com/dickwu/git-strata/releases/download/v#{version}/Git-Strata_#{version}_arm64.dmg"
+  on_arm do
+    url "https://github.com/dickwu/git-strata/releases/download/v#{version}/Git-Strata_#{version}_arm64.dmg"
+    sha256 "0000000000000000000000000000000000000000000000000000000000000000"
+  end
+
   name "GIT STRATA"
   desc "Desktop app for git-strata sessions"
   homepage "https://github.com/dickwu/git-strata"
@@ -18,7 +21,10 @@ cask "git-strata-desktop" do
 
   app "GIT STRATA.app"
 
+  # Only the app's own bundle-id paths. Never ~/Library/Application Support/git-strata:
+  # that is the daemon's config, pins and store, owned by the git-strata formula.
   zap trash: [
+    "~/Library/Application Support/io.github.dickwu.git-strata",
     "~/Library/Caches/io.github.dickwu.git-strata",
     "~/Library/Preferences/io.github.dickwu.git-strata.plist",
     "~/Library/Saved Application State/io.github.dickwu.git-strata.savedState",
@@ -26,10 +32,11 @@ cask "git-strata-desktop" do
   ]
 
   caveats <<~EOS
-    Release builds are signed with whatever identity the release workflow had
-    (ad-hoc unless a Developer ID is configured) and may not be notarized. If
-    macOS refuses the first open, allow it once in System Settings > Privacy &
-    Security > Open Anyway.
+    Unless this release is notarized, macOS blocks the first open: allow it in
+    System Settings > Privacy & Security > Open Anyway.
+    If the app is not listed there, run:
+      sudo xattr -dr com.apple.quarantine "/Applications/GIT STRATA.app"
+
     The app drives the daemon from the git-strata formula (LaunchAgent
     com.gwd.git-stratad); see `brew info dickwu/tap/git-strata`.
   EOS
