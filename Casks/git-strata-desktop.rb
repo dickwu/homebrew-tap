@@ -2,8 +2,9 @@ cask "git-strata-desktop" do
   version "0.1.0"
 
   on_arm do
-    url "https://github.com/dickwu/git-strata/releases/download/v#{version}/Git-Strata_#{version}_arm64.dmg"
     sha256 "0000000000000000000000000000000000000000000000000000000000000000"
+
+    url "https://github.com/dickwu/git-strata/releases/download/v#{version}/Git-Strata_#{version}_arm64.dmg"
   end
 
   name "GIT STRATA"
