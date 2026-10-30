@@ -21,6 +21,7 @@ brew tap dickwu/tap
 | [`cron-rs-web`](https://github.com/dickwu/cron-rs-web) | Formula | Web dashboard for cron-rs — single binary with embedded Next.js UI | `brew install cron-rs-web` |
 | [`source-map-php`](https://github.com/dickwu/source-map-php) | Formula | CLI-first PHP code search indexer for Laravel and Hyperf repositories | `brew install source-map-php` |
 | [`source-map-tauri`](https://github.com/dickwu/source-map-tauri) | Formula | Static Tauri app scanner that emits Meilisearch-ready NDJSON | `brew install source-map-tauri` |
+| [`sub-bot`](https://github.com/dickwu/sub-bot) | Formula | Self-hosted Rust agent server with sessions, async tasks and signed webhooks | `brew install sub-bot` |
 
 ## AI Web Debugger
 

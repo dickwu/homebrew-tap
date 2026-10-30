@@ -1,5 +1,5 @@
 class SubBot < Formula
-  desc "Self-hosted Rust agent server with tools, sessions, async tasks and signed webhooks"
+  desc "Self-hosted Rust agent server with sessions, async tasks and signed webhooks"
   homepage "https://github.com/dickwu/sub-bot"
   version "0.5.0"
 
