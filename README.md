@@ -182,8 +182,9 @@ The daemon runs as the single LaunchAgent `com.gwd.git-stratad`. Do not use `bre
 
 ```bash
 mkdir -p ~/Library/LaunchAgents
-git-stratad --print-plist "$(brew --prefix)/opt/git-strata/bin/git-stratad" > /tmp/git-stratad.plist &&
-  mv /tmp/git-stratad.plist ~/Library/LaunchAgents/com.gwd.git-stratad.plist
+t=$(mktemp ~/Library/LaunchAgents/.git-stratad.XXXXXX) &&
+  git-stratad --print-plist "$(brew --prefix)/opt/git-strata/bin/git-stratad" > "$t" &&
+  mv "$t" ~/Library/LaunchAgents/com.gwd.git-stratad.plist
 mkdir -p ~/Library/Application\ Support/git-strata
 cp "$(brew --prefix)/share/git-strata/config.toml" ~/Library/Application\ Support/git-strata/
 # edit config.toml ([paths] root on the same APFS volume as your repos), then:
