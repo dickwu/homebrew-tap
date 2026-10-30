@@ -17,11 +17,13 @@ brew tap dickwu/tap
 | [`realtime-pdf`](https://github.com/dickwu/realtime-pdf) | Cask | Desktop PDF watcher with saved history and regeneration hooks | `brew install --cask realtime-pdf` |
 | [`piu`](https://github.com/dickwu/piu) | Cask | Native desktop API client — Postman alternative built with Tauri | `brew install --cask piu` |
 | [`wordbrain`](https://github.com/dickwu/wordbrain) | Cask | Local-first English vocabulary builder with word-network graphs and FSRS review | `brew install --cask wordbrain` |
+| [`git-strata-desktop`](https://github.com/dickwu/git-strata) | Cask | GIT STRATA desktop app for git-strata sessions (macOS arm64 only; installs the `git-strata` formula) | `brew install --cask dickwu/tap/git-strata-desktop` |
 | [`ironguard`](https://github.com/dickwu/ironguard) | Formula | Modern cross-platform WireGuard in Rust — async Tokio, JSON config, QUIC transport, post-quantum ready | `brew install ironguard` |
 | [`cron-rs-web`](https://github.com/dickwu/cron-rs-web) | Formula | Web dashboard for cron-rs — single binary with embedded Next.js UI | `brew install cron-rs-web` |
 | [`source-map-php`](https://github.com/dickwu/source-map-php) | Formula | CLI-first PHP code search indexer for Laravel and Hyperf repositories | `brew install source-map-php` |
 | [`source-map-tauri`](https://github.com/dickwu/source-map-tauri) | Formula | Static Tauri app scanner that emits Meilisearch-ready NDJSON | `brew install source-map-tauri` |
 | [`sub-bot`](https://github.com/dickwu/sub-bot) | Formula | Self-hosted Rust agent server with sessions, async tasks and signed webhooks | `brew install sub-bot` |
+| [`git-strata`](https://github.com/dickwu/git-strata) | Formula | Per-session APFS workspaces over shared git base snapshots: CLI + daemon (macOS arm64 only) | `brew install dickwu/tap/git-strata` |
 
 ## AI Web Debugger
 
@@ -168,3 +170,44 @@ If macOS shows a damaged app or quarantine warning, run:
 ```bash
 sudo xattr -d com.apple.quarantine /Applications/WordBrain.app/
 ```
+
+## git-strata
+
+Per-session APFS workspaces over shared git base snapshots: the `git-strata` CLI and the `git-stratad` daemon. macOS arm64 (Apple silicon) only, macOS 13+, repos and data root on one APFS volume. Installs the prebuilt release tarball.
+
+```bash
+brew install dickwu/tap/git-strata
+```
+
+The daemon runs as the single LaunchAgent `com.gwd.git-stratad`. Do not use `brew services` for it. Write the plist once with the stable opt path, then start it:
+
+```bash
+mkdir -p ~/Library/LaunchAgents
+t=$(mktemp ~/Library/LaunchAgents/.git-stratad.XXXXXX) &&
+  git-stratad --print-plist "$(brew --prefix)/opt/git-strata/bin/git-stratad" > "$t" &&
+  mv "$t" ~/Library/LaunchAgents/com.gwd.git-stratad.plist
+mkdir -p ~/Library/Application\ Support/git-strata
+cp "$(brew --prefix)/share/git-strata/config.toml" ~/Library/Application\ Support/git-strata/
+# edit config.toml ([paths] root on the same APFS volume as your repos), then:
+git-strata daemon start
+```
+
+After `brew upgrade git-strata`, run `git-strata daemon stop && git-strata daemon start`. Before uninstalling, run `git-strata daemon stop` and remove the plist.
+
+The formula binaries are not quarantined by Homebrew, so they need no `xattr` step.
+
+## GIT STRATA Desktop
+
+Desktop app for git-strata sessions; it drives the daemon from the `git-strata` formula (installed as a dependency). macOS arm64 (Apple silicon) only.
+
+```bash
+brew install --cask dickwu/tap/git-strata-desktop
+```
+
+If macOS shows a damaged app or quarantine warning, allow it in System Settings > Privacy & Security > Open Anyway, or run:
+
+```bash
+sudo xattr -dr com.apple.quarantine "/Applications/GIT STRATA.app"
+```
+
+New git-strata releases update both the formula and the cask through git-strata's `homebrew.yml` workflow.
