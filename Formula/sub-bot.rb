@@ -1,29 +1,29 @@
 class SubBot < Formula
   desc "Self-hosted Rust agent server with sessions, async tasks and signed webhooks"
   homepage "https://github.com/dickwu/sub-bot"
-  version "0.10.2"
+  version "0.10.3"
 
   on_macos do
     on_arm do
       url "https://github.com/dickwu/sub-bot/releases/download/v#{version}/sub-bot-v#{version}-aarch64-apple-darwin.tar.gz"
-      sha256 "e1dd1671a88d93a2b52bf09e38c6ca5337cbcd22187d2a275a6341d651c28a1a"
+      sha256 "8f83fd3f0ad90bb480bc8bb4edfe37eeeb0cc934bb3e7d6872d854858a824809"
     end
 
     on_intel do
       url "https://github.com/dickwu/sub-bot/releases/download/v#{version}/sub-bot-v#{version}-x86_64-apple-darwin.tar.gz"
-      sha256 "ae48c11f1256fd37687bd4e8038e241d70786d78816d62d25961a5a9b1c593b5"
+      sha256 "d0f1db5c64478748e6f1436cf4ebbcd6793936928836876caf66ec77d77a975f"
     end
   end
 
   on_linux do
     on_arm do
       url "https://github.com/dickwu/sub-bot/releases/download/v#{version}/sub-bot-v#{version}-aarch64-unknown-linux-musl.tar.gz"
-      sha256 "514c1b8a02216488ec696cc84d5dcf5e5eec012bec1a784f08538f03d7fdc453"
+      sha256 "efb674d442a6140d8bb3220aa4ca381791879be0af034eb13ce80cde5ad09ba2"
     end
 
     on_intel do
       url "https://github.com/dickwu/sub-bot/releases/download/v#{version}/sub-bot-v#{version}-x86_64-unknown-linux-musl.tar.gz"
-      sha256 "89075906fef46f47c0ece71defa611da651786aabdede712c7c4af12da3c9eba"
+      sha256 "099dc5d1a08ea9e77f73617e2405f45ec3456abb51e6fbc3fc59404d11ab535f"
     end
   end
 
