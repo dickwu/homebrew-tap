@@ -1,8 +1,8 @@
 cask "git-strata-desktop" do
-  version "0.2.0"
+  version "0.2.1"
 
   on_arm do
-    sha256 "1e76737b0ac99949e09d17ca5ec007767ce582ee750057e9fef1dc92ea557f95"
+    sha256 "540c74d79f56b83618131e3bb70897ee39a74d9e7e6aa64faac623dc9772fe27"
 
     url "https://github.com/dickwu/git-strata/releases/download/v#{version}/Git-Strata_#{version}_arm64.dmg"
   end
