@@ -1,8 +1,8 @@
 class GitStrata < Formula
   desc "Per-session APFS workspaces over shared git base snapshots"
   homepage "https://github.com/dickwu/git-strata"
-  url "https://github.com/dickwu/git-strata/releases/download/v0.2.2/git-strata-0.2.2-aarch64-apple-darwin.tar.gz"
-  sha256 "67211efae00e5bf0a731a96f3b84ed7b60f573f337a2697d0b02a3f923167b3b"
+  url "https://github.com/dickwu/git-strata/releases/download/v0.2.3/git-strata-0.2.3-aarch64-apple-darwin.tar.gz"
+  sha256 "7c6398a8648081412bce8135dd2b2fd7be2a75e5cc7b95c5633ac037ec3f4c37"
   license any_of: ["MIT", "Apache-2.0"]
 
   livecheck do
@@ -38,9 +38,13 @@ class GitStrata < Formula
 
       Set [paths] root in config.toml to a directory on the same APFS volume
       as your repos (default ~/.strata).
-      After `brew upgrade git-strata`: git-strata daemon stop && git-strata daemon start
-      Before `brew uninstall git-strata`: git-strata daemon stop, then remove
-      ~/Library/LaunchAgents/com.gwd.git-stratad.plist.
+      After `brew upgrade git-strata`, restart the agent in place:
+        launchctl kickstart -k gui/$(id -u)/com.gwd.git-stratad
+      then check `git-strata daemon status` and run
+        npx skills update git-strata -g
+      Before `brew uninstall git-strata`: run git-strata daemon stop. Only after
+      it succeeds, remove ~/Library/LaunchAgents/com.gwd.git-stratad.plist,
+      then uninstall. If stop fails or times out, do not continue.
     EOS
   end
 
