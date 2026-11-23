@@ -1,8 +1,8 @@
 class GitStrata < Formula
   desc "Per-session APFS workspaces over shared git base snapshots"
   homepage "https://github.com/dickwu/git-strata"
-  url "https://github.com/dickwu/git-strata/releases/download/v0.2.3/git-strata-0.2.3-aarch64-apple-darwin.tar.gz"
-  sha256 "7c6398a8648081412bce8135dd2b2fd7be2a75e5cc7b95c5633ac037ec3f4c37"
+  url "https://github.com/dickwu/git-strata/releases/download/v0.3.1/git-strata-0.3.1-aarch64-apple-darwin.tar.gz"
+  sha256 "bdb2e4b364c555c024393504ecaa5a4547c95a69c03c2d37b3f0605450a51949"
   license any_of: ["MIT", "Apache-2.0"]
 
   livecheck do
@@ -23,28 +23,60 @@ class GitStrata < Formula
   # daemons would contend for the same socket and lock.
   def caveats
     <<~EOS
-      The daemon runs as the per-user LaunchAgent com.gwd.git-stratad.
-      Do not use `brew services` for it. Write the plist once, pointing at the
-      stable opt path (upgrades then need no plist edit):
+      If the Daemon panel confirms that the LaunchAgent now runs git-stratad
+      from GIT STRATA.app, keep agents idle and remove this formula with
+      `brew uninstall dickwu/tap/git-strata`. Keep the daemon running and leave
+      ~/Library/LaunchAgents/com.gwd.git-stratad.plist in place. Immediately
+      choose Install command-line tool in the app before agents resume.
 
-        mkdir -p ~/Library/LaunchAgents
-        t=$(mktemp ~/Library/LaunchAgents/.git-stratad.XXXXXX) &&
-          git-stratad --print-plist #{opt_bin}/git-stratad > "$t" &&
-          mv "$t" ~/Library/LaunchAgents/com.gwd.git-stratad.plist
-        mkdir -p ~/Library/Application\\ Support/git-strata
-        cp #{opt_pkgshare}/config.toml ~/Library/Application\\ Support/git-strata/
-        # edit config.toml, then:
-        git-strata daemon start
+      If you use the desktop app and the LaunchAgent still runs the formula's
+      daemon, mark the formula as installed on request before the cask upgrade.
 
-      Set [paths] root in config.toml to a directory on the same APFS volume
-      as your repos (default ~/.strata).
-      After `brew upgrade git-strata`, restart the agent in place:
+        brew tab --installed-on-request dickwu/tap/git-strata
+
+      Follow the transition steps in the 0.3.0 release notes.
+        https://github.com/dickwu/git-strata/blob/main/docs/release-notes/v0.3.0.md#move-an-existing-desktop-installation
+
+      For an existing CLI-only or headless installation, skip first-time setup.
+      Once daemon work is idle, restart the agent after
+      `brew upgrade dickwu/tap/git-strata`.
+
         launchctl kickstart -k gui/$(id -u)/com.gwd.git-stratad
-      then check `git-strata daemon status` and run
-        npx skills update git-strata -g
-      Before `brew uninstall git-strata`: run git-strata daemon stop. Only after
-      it succeeds, remove ~/Library/LaunchAgents/com.gwd.git-stratad.plist,
-      then uninstall. If stop fails or times out, do not continue.
+
+      Check `git-strata daemon status`, then run `npx skills update git-strata -g`.
+
+      The daemon runs as the per-user LaunchAgent com.gwd.git-stratad.
+      Do not use `brew services` for it. On first-time CLI-only or headless
+      setup, create only missing files. The plist uses the stable opt path.
+
+        agent_dir="$HOME/Library/LaunchAgents"
+        config_dir="$HOME/Library/Application Support/git-strata"
+        plist="$agent_dir/com.gwd.git-stratad.plist"
+        config="$config_dir/config.toml"
+        if [ ! -e "$plist" ] && [ ! -L "$plist" ]; then
+          mkdir -p "$agent_dir" &&
+            t=$(mktemp "$agent_dir/.git-stratad.XXXXXX") &&
+            "#{opt_bin}/git-stratad" --print-plist "#{opt_bin}/git-stratad" > "$t" &&
+            mv -n "$t" "$plist"
+        fi
+        if [ ! -e "$config" ] && [ ! -L "$config" ]; then
+          mkdir -p "$config_dir" &&
+            cp -n "#{opt_pkgshare}/config.toml" "$config"
+        fi
+
+      Edit a new config.toml to point [paths] root at a directory on the same
+      APFS volume as your repos and add those repos. Then run `git-strata daemon start`.
+
+      To uninstall when the LaunchAgent still runs the formula's daemon, run
+      `git-strata daemon stop`. If the stop fails or times out, leave the files
+      in place. After the stop succeeds, check the LaunchAgent.
+
+        launchctl print gui/$(id -u)/com.gwd.git-stratad
+
+      Continue only when print explicitly reports that the service could not
+      be found in this domain (exit 113). Remove the plist at
+      ~/Library/LaunchAgents/com.gwd.git-stratad.plist, then run
+      `brew uninstall dickwu/tap/git-strata`.
     EOS
   end
 
