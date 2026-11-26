@@ -1,8 +1,8 @@
 class GitStrata < Formula
   desc "Per-session APFS workspaces over shared git base snapshots"
   homepage "https://github.com/dickwu/git-strata"
-  url "https://github.com/dickwu/git-strata/releases/download/v0.3.1/git-strata-0.3.1-aarch64-apple-darwin.tar.gz"
-  sha256 "bdb2e4b364c555c024393504ecaa5a4547c95a69c03c2d37b3f0605450a51949"
+  url "https://github.com/dickwu/git-strata/releases/download/v0.3.2/git-strata-0.3.2-aarch64-apple-darwin.tar.gz"
+  sha256 "5d68a6612f22293631a4b5970974ee59c544cd44777916e9a965eb75a102c929"
   license any_of: ["MIT", "Apache-2.0"]
 
   livecheck do
